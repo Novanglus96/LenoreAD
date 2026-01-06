@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from backend.api import api
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/', api.urls),
 ]
+
+admin.site.site_title = "LenoreAD site admin (DEV)"
+admin.site.site_header = "LenroreAD administraion"
+admin.site.index_title = "Site adminstration"

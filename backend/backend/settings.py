@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "firstapp",
+    "ad_computers",
+    "ad_groups",
+    "ad_users",
     "corsheaders",
     "django_filters",
     "dbbackup",
@@ -272,3 +274,9 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False,
 }
+
+# AD Information
+AD_DOMAIN = os.environ.get("AD_DOMAIN")
+AD_USERNAME = os.environ.get("AD_USERNAME")
+AD_PASSWORD = os.environ.get("AD_PASSWORD")
+AD_DC = os.environ.get("AD_DC")

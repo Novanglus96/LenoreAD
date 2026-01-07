@@ -1,6 +1,13 @@
 from ninja import Router
+from ninja.errors import HttpError
 from ad_users.api.schemas.user import ADUserOut
 from ad_users.services import get_user_by_samaccountname, is_ad_user_enabled
+import logging
+
+api_logger = logging.getLogger("api")
+db_logger = logging.getLogger("db")
+error_logger = logging.getLogger("error")
+task_logger = logging.getLogger("task")
 
 ad_user_router = Router(tags=["Users"])
 
@@ -23,8 +30,10 @@ def get_ad_user(request, user_sam: str):
     user = get_user_by_samaccountname(user_sam)
 
     if not user:
-        return 404, {"detail": "User not found"}
+        api_logger.error("AD User not found")
+        raise HttpError(404, "User not found")
 
+    api_logger.info(f"AD User {user_sam} found")
     return ADUserOut(
         username=user.get("sAMAccountName"),
         email=user.get("mail"),

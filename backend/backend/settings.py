@@ -353,3 +353,5 @@ AD_DOMAIN = os.environ.get("AD_DOMAIN")
 AD_USERNAME = os.environ.get("AD_USERNAME")
 AD_PASSWORD = os.environ.get("AD_PASSWORD")
 AD_DC = os.environ.get("AD_DC")
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None

@@ -6,6 +6,8 @@ from datetime import datetime
 class ADUserOut(Schema):
     username: str
     enabled: bool
+    when_changed: datetime
+    sid: str
     email: Optional[str] = None
     display_name: Optional[str] = None
     given_name: Optional[str] = None

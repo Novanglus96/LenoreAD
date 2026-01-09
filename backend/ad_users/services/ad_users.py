@@ -31,6 +31,8 @@ def user_ad_attributes():
         "streetAddress",
         "telephoneNumber",
         "scriptPath",
+        "whenChanged",
+        "objectSid",
     ]
 
 

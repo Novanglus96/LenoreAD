@@ -44,6 +44,8 @@ def get_ad_user(request, user_sam: str):
         email=user.get("mail"),
         display_name=user.get("displayName"),
         enabled=is_ad_user_enabled(user),
+        sid=user.get("objectSid"),
+        when_changed=user.get("whenChanged"),
         given_name=user.get("givenName"),
         upn=user.get("userPrincipalName"),
         middle_name=user.get("middleName"),

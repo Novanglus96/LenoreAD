@@ -14,7 +14,7 @@ db_logger = logging.getLogger("db")
 error_logger = logging.getLogger("error")
 task_logger = logging.getLogger("task")
 
-ad_user_router = Router(tags=["Users"])
+ad_user_router = Router(tags=["AD Users"])
 
 
 @ad_user_router.get("/get/{user_sam}", response=ADUserOut)

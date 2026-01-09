@@ -4,6 +4,7 @@ from core.utils.auth import GlobalAuth
 from core.utils.version import get_version
 
 # Import routers from apps
+from core.api.auth import router
 from ad_users.api.routers.user import ad_user_router
 
 api = NinjaAPI(auth=[django_auth, GlobalAuth()])
@@ -13,3 +14,4 @@ api.description = "API documetation for LenoreAD"
 
 # Add routers to the API
 api.add_router("/users", ad_user_router)
+api.add_router("/accounts", router)

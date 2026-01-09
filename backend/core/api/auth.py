@@ -12,7 +12,7 @@ class LoginIn(Schema):
     password: str
 
 
-@router.post("/auth/login")
+@router.post("/auth/login", auth=None)
 def login_view(request: HttpRequest, payload: LoginIn):
     user = authenticate(
         request,
@@ -26,7 +26,7 @@ def login_view(request: HttpRequest, payload: LoginIn):
     return {"success": True}
 
 
-@router.post("/auth/logout")
+@router.post("/auth/logout", auth=None)
 def logout_view(request: HttpRequest):
     logout(request)
     return {"success": True}

@@ -30,19 +30,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Novanglus96/LenoreFin">
-    <img src="https://novanglus96.github.io/LenoreFin/images/logov2.png" alt="Logo" height="40">
+  <a href="https://github.com/Novanglus96/LenoreAD">
+    <img src="https://novanglus96.github.io/LenoreAD/images/logov2.png" alt="Logo" height="40">
   </a>
 
   <p align="center">
     An advanced finance tracker.
     <br />
-    <a href="https://novanglus96.github.io/LenoreFin"><strong>Explore the docs »</strong></a>
+    <a href="https://novanglus96.github.io/LenoreAD"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Novanglus96/LenoreFin/issues/new?template=bug_report.md">Report Bug</a>
+    <a href="https://github.com/Novanglus96/LenoreAD/issues/new?template=bug_report.md">Report Bug</a>
     ·
-    <a href="https://github.com/Novanglus96/LenoreFin/issues/new?template=feature_request.md">Request Feature</a>
+    <a href="https://github.com/Novanglus96/LenoreAD/issues/new?template=feature_request.md">Request Feature</a>
   </p>
 </div>
 
@@ -54,9 +54,7 @@
 Screenshots - COMING SOON
 <!--[![Product Name Screen Shot][product-screenshot]]-->
 
-LenoreFin began as a simple Excel spreadsheet I used to manage my family's budget. But over time, I realized no existing tools gave me the control, flexibility, and privacy I wanted. So I built LenoreFin—a personal finance tracker that puts you in charge.
-
-Designed for self-hosting, LenoreFin keeps your financial data completely local, with no third-party syncing or hidden services. It includes tools for tracking cash flow, setting up custom budgets, tagging transactions, planning for retirement or big purchases, getting bill reminders, and even forecasting account balances. Whether you're budgeting for groceries or planning a 10-year savings goal, LenoreFin helps you see the full picture—on your terms.
+LenoreAD 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,7 +73,7 @@ Designed for self-hosting, LenoreFin keeps your financial data completely local,
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Welcome to LenoreFin! This guide will help you set up and run the application using Docker and Docker Compose.
+Welcome to LenoreAD! This guide will help you set up and run the application using Docker and Docker Compose.
 
 ### Prerequisites
 
@@ -95,8 +93,8 @@ SECRET_KEY=mysupersecretkey
 DJANGO_ALLOWED_HOSTS=localhost
 CSRF_TRUSTED_ORIGINS=http://localhost
 SQL_ENGINE=django.db.backends.postgresql
-SQL_DATABASE=lenorefin
-SQL_USER=lenorefinuser
+SQL_DATABASE=LenoreAD
+SQL_USER=LenoreADuser
 SQL_PASSWORD=somepassword
 SQL_HOST=db
 SQL_PORT=5432
@@ -117,62 +115,62 @@ Create a `docker-compose.yml` file in the root directory of the project. Below i
 ```yaml
 services:
   frontend:
-    image: novanglus96/lenorefin_frontend:latest
-    container_name: lenorefin_frontend
+    image: novanglus96/LenoreAD_frontend:latest
+    container_name: LenoreAD_frontend
     networks:
-      - lenorefin
+      - LenoreAD
     restart: unless-stopped
     expose:
       - 80
     env_file:
       - ./.env
   backend:
-    image: novanglus96/lenorefin_backend:latest
-    container_name: lenorefin_backend
+    image: novanglus96/LenoreAD_backend:latest
+    container_name: LenoreAD_backend
     command: /home/app/web/start.sh
     volumes:
-      - lenorefin_static_volume:/home/app/web/staticfiles
-      - lenorefin_media_volume:/home/app/web/mediafiles
+      - LenoreAD_static_volume:/home/app/web/staticfiles
+      - LenoreAD_media_volume:/home/app/web/mediafiles
     expose:
       - 8000
     depends_on:
       - db
     networks:
-      - lenorefin
+      - LenoreAD
     env_file:
       - ./.env
   db:
     image: postgres:15
-    container_name: lenorefin_db
+    container_name: LenoreAD_db
     volumes:
-      - lenorefin_postgres_data:/var/lib/postgresql/data/
+      - LenoreAD_postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env.db
     networks:
-      - lenorefin
+      - LenoreAD
   nginx:
     image: novanglus96/lenoreapps_proxy:latest
-    container_name: lenorefin_nginx
+    container_name: LenoreAD_nginx
     ports:
       - "8080:80"
     volumes:
-      - lenorefin_static_volume:/home/app/web/staticfiles
-      - lenorefin_media_volume:/home/app/web/mediafiles
+      - LenoreAD_static_volume:/home/app/web/staticfiles
+      - LenoreAD_media_volume:/home/app/web/mediafiles
     depends_on:
       - backend
       - frontend
     networks:
-      - lenorefin
+      - LenoreAD
 
 networks:
-  lenorefin:
+  LenoreAD:
 
 volumes:
-  lenorefin_postgres_data:
+  LenoreAD_postgres_data:
     external: true
-  lenorefin_static_volume:
+  LenoreAD_static_volume:
     external: true
-  lenorefin_media_volume:
+  LenoreAD_media_volume:
     external: true
 ```
 
@@ -191,7 +189,7 @@ volumes:
 * Adjust exposed ports as needed for your environment.
 * If you encounter any issues, ensure your `.env` file has the correct values and your Docker and Docker Compose installations are up to date.
 
-Enjoy using LenoreFin!
+Enjoy using LenoreAD!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,7 +204,7 @@ Enjoy using LenoreFin!
   - [ ] Interest Tracking On Loans 
 - [ ] Financial Wizard
 
-See the [open issues](https://github.com/Novanglus96/LenoreFin/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/Novanglus96/LenoreAD/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -314,7 +312,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 John Adams - Lenore.Apps@gmail.com
 
-Project Link: [https://github.com/Novanglus96/LenoreFin](https://github.com/Novanglus96/LenoreFin)
+Project Link: [https://github.com/Novanglus96/LenoreAD](https://github.com/Novanglus96/LenoreAD)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -332,7 +330,7 @@ A heartfelt thanks to our Patrons for their generous support! Your contributions
 <!--![Silver Supporter Badge](https://img.shields.io/badge/Jane_Smith-silver?style=for-the-badge&logo=patreon&logoColor=gray)-->
 <!--![BuyMeACoffee Supporter Badge](https://img.shields.io/badge/Jane_Smith-white?style=for-the-badge&logo=buymeacoffee&logoColor=black)-->
 
-Want to see your name here? Support us on [Patreon](https://www.patreon.com/novanglus) to join our amazing community and shape the future of LenoreFin!
+Want to see your name here? Support us on [Patreon](https://www.patreon.com/novanglus) to join our amazing community and shape the future of LenoreAD!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -340,19 +338,19 @@ Want to see your name here? Support us on [Patreon](https://www.patreon.com/nova
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Novanglus96/LenoreFin?style=for-the-badge
-[contributors-url]: https://github.com/Novanglus96/LenoreFin/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Novanglus96/LenoreFin?style=for-the-badge
-[forks-url]: https://github.com/Novanglus96/LenoreFin/forks
-[stars-shield]: https://img.shields.io/github/stars/Novanglus96/LenoreFin?style=for-the-badge
-[stars-url]: https://github.com/Novanglus96/LenoreFin/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Novanglus96/LenoreFin?style=for-the-badge
-[issues-url]: https://github.com/Novanglus96/LenoreFin/issues
+[contributors-shield]: https://img.shields.io/github/contributors/Novanglus96/LenoreAD?style=for-the-badge
+[contributors-url]: https://github.com/Novanglus96/LenoreAD/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Novanglus96/LenoreAD?style=for-the-badge
+[forks-url]: https://github.com/Novanglus96/LenoreAD/forks
+[stars-shield]: https://img.shields.io/github/stars/Novanglus96/LenoreAD?style=for-the-badge
+[stars-url]: https://github.com/Novanglus96/LenoreAD/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Novanglus96/LenoreAD?style=for-the-badge
+[issues-url]: https://github.com/Novanglus96/LenoreAD/issues
 [license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
-[license-url]: https://github.com/Novanglus96/LenoreFin/blob/main/LICENSE
+[license-url]: https://github.com/Novanglus96/LenoreAD/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/johnmadamsjr
-[product-screenshot]: images/LenoreFin_Screenshot.png
+[product-screenshot]: images/LenoreAD_Screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

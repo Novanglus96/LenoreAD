@@ -1,7 +1,7 @@
-site_name: LenoreFin
-site_description: An advanced financial tracker.
+site_name: LenoreAD
+site_description: An advanced admin dashboard for AD
 site_author: John Adams
-copyright: 2025 John Adams
+copyright: 2026 John Adams
 nav:
   - Home: index.md
   - Reference:

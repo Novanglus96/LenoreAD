@@ -34,3 +34,4 @@ class ADUserOut(Schema):
     street_address: Optional[str] = None
     telephone: Optional[str] = None
     script: Optional[str] = None
+    sn: Optional[str] = None

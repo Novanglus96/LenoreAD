@@ -70,6 +70,7 @@ def get_ad_user(request, user_sam: str):
         street_address=user.get("streetAddress"),
         telephone=user.get("telephoneNumber"),
         script=user.get("scriptPath"),
+        sn=user.get("sn"),
     )
 
 

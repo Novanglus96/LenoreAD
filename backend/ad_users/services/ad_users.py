@@ -33,6 +33,7 @@ def user_ad_attributes():
         "scriptPath",
         "whenChanged",
         "objectSid",
+        "sn",
     ]
 
 

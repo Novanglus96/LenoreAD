@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Novanglus96/LenoreAD/compare/v1.0.1...v1.0.2) (2026-01-12)
+
+
+### Bug Fixes
+
+* permission issue with versioing workflow ([95dfb64](https://github.com/Novanglus96/LenoreAD/commit/95dfb6411d10c5ce7de004239d3e7fe0184c686b))
+
 ## [1.0.1](https://github.com/Novanglus96/LenoreAD/compare/v1.0.0...v1.0.1) (2026-01-12)
 
 

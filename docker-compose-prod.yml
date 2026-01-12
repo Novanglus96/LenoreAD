@@ -29,6 +29,7 @@ services:
       - db
     networks:
       - default
+      - backend
     env_file:
       - ./.env
     image: lenoread_backend:production
@@ -46,6 +47,7 @@ services:
       - backend
     networks:
       - default
+      - backend
     env_file:
       - ./.env
     image: lenoread_worker:production
@@ -58,6 +60,7 @@ services:
       - ./.env.db
     networks:
       - default
+      - backend
     container_name: lenoread_db
     environment:
       - TZ=UTC
@@ -82,3 +85,7 @@ volumes:
   static_volume:
   media_volume:
   postgres_bkp:
+   
+networks:
+  backend:
+    internal: true

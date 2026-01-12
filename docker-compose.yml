@@ -37,6 +37,7 @@ services:
       - db
     networks:
       - default
+      - backend
     image: lenoread_backend:development
     container_name: lenoread_backend_dev
   worker:
@@ -55,7 +56,7 @@ services:
       - db
       - backend
     networks:
-      - default
+      - backend
     image: lenoread_worker:development
     container_name: lenoread_worker_dev
   db:
@@ -65,7 +66,7 @@ services:
     env_file:
       - ./.env.dev.db
     networks:
-      - default
+      - backend
     container_name: lenoread_db_dev
     environment:
       - TZ=UTC
@@ -75,3 +76,7 @@ volumes:
   static_volume:
   media_volume:
   postgres_bkp:
+
+networks:
+  backend:
+    internal: true

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "ad_computers",
     "ad_groups",
     "ad_users",
+    "core.apps.CoreConfig",
     "corsheaders",
     "django_filters",
     "dbbackup",

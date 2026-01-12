@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django_cryptography.fields import encrypt
 
 # Create your models here.
 
@@ -16,7 +17,7 @@ class ActiveDirectoryUser(models.Model):
     characters.
     """
 
-    sam_account = models.CharField(max_length=254, unique=True)
+    sam_account = encrypt(models.CharField(max_length=254))
     email = models.CharField(max_length=254, unique=True)
     display_name = models.CharField(max_length=508)
     enabled = models.BooleanField(default=True)

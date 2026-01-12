@@ -9,7 +9,7 @@ class ActiveDirectoryUserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     list_display_links = ["display_name"]
 
-    ordering = ["sur_name", "employee_id"]
+    ordering = ["sur_name", "given_name", "employee_id", "id"]
 
 
 admin.site.register(ActiveDirectoryUser, ActiveDirectoryUserAdmin)

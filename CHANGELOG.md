@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Novanglus96/LenoreAD/compare/v1.0.0...v1.0.1) (2026-01-12)
+
+
+### Bug Fixes
+
+* mkdocs permission fix for workflow ([e5adba2](https://github.com/Novanglus96/LenoreAD/commit/e5adba28a7f75fa870f635e3aeca0720410e5d52))
+
 # 1.0.0 (2026-01-12)
 
 

@@ -10,6 +10,9 @@ on:
       - beta
       - rc
 
+permissions:
+  contents: write
+
 jobs:
   release:
     name: Release

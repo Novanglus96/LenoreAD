@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import logging
+
+DEBUG_ENV = os.getenv("DEBUG", "0")
+DB_LOG_LEVEL = logging.DEBUG if DEBUG_ENV == "1" else logging.INFO
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +44,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "firstapp",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "ad_computers",
+    "ad_groups",
+    "ad_users",
+    "core.apps.CoreConfig",
     "corsheaders",
     "django_filters",
     "dbbackup",
@@ -57,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -140,6 +151,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
 
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SAMESITE = "Lax"
+CSRF_COOKIE_SAMESITE = "Lax"
+
 CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
 
 CORS_ORIGIN_WHITELIST = os.environ.get("CSRF_TRUSTED_ORIGINS").split(" ")
@@ -151,24 +169,93 @@ DBBACKUP_STORAGE_OPTIONS = {"location": "/backups/"}
 DBBACKUP_CLEANUP_KEEP = 2
 DBBACKUP_CLEANUP_KEEP_MEDIA = 2
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
+    # ---------- FORMATTERS ----------
     "formatters": {
-        "verbose": {
-            "format": "%(levelname)s %(name)-12s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"
-        }
+        "standard": {
+            "format": "[%(asctime)s] %(levelname)s %(message)s",
+        },
+        "detailed": {
+            "format": "[%(asctime)s] %(levelname)s "
+            "%(filename)s:%(lineno)d %(funcName)s(): %(message)s",
+        },
     },
+    # ---------- HANDLERS ----------
     "handlers": {
-        "console": {
-            "level": "DEBUG",
+        "stdout_handler": {
             "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        }
+            "stream": "ext://sys.stdout",
+            "formatter": "standard",
+            "level": "WARNING",
+        },
+        "db_file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": str(LOG_DIR / "db.log"),
+            "maxBytes": 1024 * 1024 * 5,  # 5MB
+            "backupCount": 5,
+            "formatter": "standard",
+            "level": DB_LOG_LEVEL,
+        },
+        "api_file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": str(LOG_DIR / "api.log"),
+            "maxBytes": 1024 * 1024 * 5,
+            "backupCount": 5,
+            "formatter": "standard",
+            "level": DB_LOG_LEVEL,
+        },
+        "error_file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": str(LOG_DIR / "error.log"),
+            "maxBytes": 1024 * 1024 * 5,
+            "backupCount": 5,
+            "formatter": "detailed",
+            "level": DB_LOG_LEVEL,
+        },
+        "task_file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": str(LOG_DIR / "task.log"),
+            "maxBytes": 1024 * 1024 * 5,
+            "backupCount": 5,
+            "formatter": "standard",
+            "level": DB_LOG_LEVEL,
+        },
     },
+    # ---------- LOGGERS ----------
+    "loggers": {
+        # Database operations logger
+        "db": {
+            "handlers": ["db_file_handler", "stdout_handler"],
+            "level": DB_LOG_LEVEL,
+            "propagate": False,
+        },
+        # API activity logger
+        "api": {
+            "handlers": ["api_file_handler", "stdout_handler"],
+            "level": DB_LOG_LEVEL,
+            "propagate": False,
+        },
+        "error": {
+            "handlers": ["error_file_handler"],
+            "level": DB_LOG_LEVEL,
+            "propagate": False,
+        },
+        "task": {
+            "handlers": ["task_file_handler", "stdout_handler"],
+            "level": DB_LOG_LEVEL,
+            "propagate": False,
+        },
+    },
+    # (Optional) fallback root logger
     "root": {
-        "level": "INFO",
-        "handlers": ["console"],
+        "handlers": ["stdout_handler"],
+        "level": "WARNING",
     },
 }
 
@@ -272,3 +359,31 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": False,
 }
+
+# AD Information
+AD_DOMAIN = os.environ.get("AD_DOMAIN")
+AD_USERNAME = os.environ.get("AD_USERNAME")
+AD_PASSWORD = os.environ.get("AD_PASSWORD")
+AD_DC = os.environ.get("AD_DC")
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
+
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_LOGOUT_ON_GET = False
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+ACCOUNT_ADAPTER = "backend.adapters.NoSignupAdapter"

@@ -8,8 +8,8 @@ services:
     restart: unless-stopped
     expose:
       - 80
-    image: template_frontend:production
-    container_name: template_frontend
+    image: lenoread_frontend:production
+    container_name: lenoread_frontend
     env_file:
       - ./.env
     environment:
@@ -29,10 +29,11 @@ services:
       - db
     networks:
       - default
+      - backend
     env_file:
       - ./.env
-    image: template_backend:production
-    container_name: template_backend
+    image: lenoread_backend:production
+    container_name: lenoread_backend
   worker:
     build:
       context: ./backend
@@ -46,23 +47,25 @@ services:
       - backend
     networks:
       - default
+      - backend
     env_file:
       - ./.env
-    image: template_worker:production
-    container_name: template_worker
+    image: lenoread_worker:production
+    container_name: lenoread_worker
   db:
-    image: postgres:15
+    image: postgres:18-trixie
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env.db
     networks:
       - default
-    container_name: template_db
+      - backend
+    container_name: lenoread_db
     environment:
       - TZ=UTC
   nginx:
-    image: registry.danielleandjohn.love/django_vue_proxy:latest
+    image: novanglus96/lenoreapps_proxy:latest
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
@@ -73,7 +76,7 @@ services:
       - default
     ports:
       - 7000:80
-    container_name: template_proxy
+    container_name: lenoread_proxy
     environment:
       - TZ=${TIMEZONE}
 
@@ -82,3 +85,7 @@ volumes:
   static_volume:
   media_volume:
   postgres_bkp:
+   
+networks:
+  backend:
+    internal: true

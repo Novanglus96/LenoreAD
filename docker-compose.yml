@@ -8,8 +8,8 @@ services:
     restart: unless-stopped
     ports:
       - 8081:5173
-    image: template_frontend:development
-    container_name: template_frontend_dev
+    image: lenoread_frontend:development
+    container_name: lenoread_frontend_dev
     volumes:
       - ./frontend:/app
     environment:
@@ -32,12 +32,14 @@ services:
       - DEBUG=1
     ports:
       - 8001:8001
+      - 8002:8002
     depends_on:
       - db
     networks:
       - default
-    image: template_backend:development
-    container_name: template_backend_dev
+      - backend
+    image: lenoread_backend:development
+    container_name: lenoread_backend_dev
   worker:
     build:
       context: ./backend
@@ -54,18 +56,18 @@ services:
       - db
       - backend
     networks:
-      - default
-    image: template_worker:development
-    container_name: template_worker_dev
+      - backend
+    image: lenoread_worker:development
+    container_name: lenoread_worker_dev
   db:
-    image: postgres:15
+    image: postgres:18-trixie
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/
     env_file:
       - ./.env.dev.db
     networks:
-      - default
-    container_name: template_db_dev
+      - backend
+    container_name: lenoread_db_dev
     environment:
       - TZ=UTC
 
@@ -74,3 +76,7 @@ volumes:
   static_volume:
   media_volume:
   postgres_bkp:
+
+networks:
+  backend:
+    internal: true

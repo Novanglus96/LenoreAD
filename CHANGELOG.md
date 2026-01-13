@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Novanglus96/LenoreAD/compare/v1.0.2...v1.0.3) (2026-01-13)
+
+
+### Bug Fixes
+
+* missing scripts for workflow ([6823bea](https://github.com/Novanglus96/LenoreAD/commit/6823bea8997ad37e8d56ab99eb52633f35746dce))
+
 ## [1.0.2](https://github.com/Novanglus96/LenoreAD/compare/v1.0.1...v1.0.2) (2026-01-12)
 
 

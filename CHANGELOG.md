@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Novanglus96/LenoreAD/compare/v1.0.5...v1.0.6) (2026-01-14)
+
+
+### Bug Fixes
+
+* fix some issues ([99b1b4f](https://github.com/Novanglus96/LenoreAD/commit/99b1b4f12886202a86927b8af7c36c2ccb4b3388))
+
 ## [1.0.5](https://github.com/Novanglus96/LenoreAD/compare/v1.0.4...v1.0.5) (2026-01-14)
 
 

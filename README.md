@@ -34,10 +34,10 @@
     <img src="frontend/public/logov2.png" alt="Logo" height="40">
   </a>
 
-<h3 align="center">LenoreTemplate</h3>
+<h3 align="center">LenoreAD</h3>
 
   <p align="center">
-    A simple shopping app.
+    An admin dashboard for Active Directory / Entra
     <br />
     <a href="https://github.com/Gamunda/LenoreFin"><strong>Explore the docs »</strong></a>
     <br />

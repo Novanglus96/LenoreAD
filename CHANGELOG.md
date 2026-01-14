@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/Novanglus96/LenoreAD/compare/v1.0.7...v1.0.8) (2026-01-14)
+
+
+### Bug Fixes
+
+* setup initial wording for documentation ([7eed2e1](https://github.com/Novanglus96/LenoreAD/commit/7eed2e12e229c2b33bdb0f66043fe4a5655a5fe6))
+
 ## [1.0.7](https://github.com/Novanglus96/LenoreAD/compare/v1.0.6...v1.0.7) (2026-01-14)
 
 

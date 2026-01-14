@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Novanglus96/LenoreAD/compare/v1.0.4...v1.0.5) (2026-01-14)
+
+
+### Bug Fixes
+
+* fix release doc command to include config path ([169a0ff](https://github.com/Novanglus96/LenoreAD/commit/169a0ffd147e7a554830ea29c015874ccdd2fc4f))
+
 ## [1.0.4](https://github.com/Novanglus96/LenoreAD/compare/v1.0.3...v1.0.4) (2026-01-14)
 
 

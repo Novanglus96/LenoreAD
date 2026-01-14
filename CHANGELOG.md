@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/Novanglus96/LenoreAD/compare/v1.0.6...v1.0.7) (2026-01-14)
+
+
+### Bug Fixes
+
+* missing site_url ([4a8754d](https://github.com/Novanglus96/LenoreAD/commit/4a8754dff3fa602f876dda1d031911a2868f5682))
+
 ## [1.0.6](https://github.com/Novanglus96/LenoreAD/compare/v1.0.5...v1.0.6) (2026-01-14)
 
 

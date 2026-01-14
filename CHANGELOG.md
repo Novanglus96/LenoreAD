@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Novanglus96/LenoreAD/compare/v1.0.3...v1.0.4) (2026-01-14)
+
+
+### Bug Fixes
+
+* new github actions to fix ci/cd workflow issues ([1bf4838](https://github.com/Novanglus96/LenoreAD/commit/1bf4838166d4ca25c005eb36999cc002fe5b9cb6))
+
 ## [1.0.3](https://github.com/Novanglus96/LenoreAD/compare/v1.0.2...v1.0.3) (2026-01-13)
 
 

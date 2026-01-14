@@ -31,13 +31,15 @@
 <br />
 <div align="center">
   <a href="https://github.com/Novanglus96/LenoreAD">
-    <img src="https://novanglus96.github.io/LenoreAD/images/logov2.png" alt="Logo" height="40">
+    <img src="frontend/public/logov2.png" alt="Logo" height="40">
   </a>
 
+<h3 align="center">LenoreAD</h3>
+
   <p align="center">
-    An advanced finance tracker.
+  An Active Directory Management Dashboard
     <br />
-    <a href="https://novanglus96.github.io/LenoreAD"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Novanglus96/LenoreAD"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Novanglus96/LenoreAD/issues/new?template=bug_report.md">Report Bug</a>
@@ -51,10 +53,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Screenshots - COMING SOON
-<!--[![Product Name Screen Shot][product-screenshot]]-->
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-LenoreAD 
+A managment dashboard to make managing active directory easier.  It includes some features to work with a hybrid environment that uses office 365 / entra.  Built to be simple and secure, it can help accomplish admin tasks in a consistent and auditable way.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -196,13 +197,20 @@ Enjoy using LenoreAD!
 
 
 <!-- USAGE EXAMPLES -->
+## Usage
+See the full <a href="https://novanglus96.github.io/LenoreAD"><strong>documentation</strong></a>.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ROADMAP -->
 ## Roadmap
 
-- [ ] v1.2 Release
-  - [ ] Credit Card Bill Calculations
-  - [ ] Loading Screen on app load
-  - [ ] Interest Tracking On Loans 
-- [ ] Financial Wizard
+- [ ] v1.1 Release
+  - [ ] Templates
+  - [ ] Office 365 tools
+  - [ ] Reports
 
 See the [open issues](https://github.com/Novanglus96/LenoreAD/issues) for a full list of proposed features (and known issues).
 
@@ -284,7 +292,6 @@ Before submitting your PR, please ensure:
 ### 6. Testing Changes
 Please test your changes locally or in a staging environment before opening a PR. Use alpha or beta branches for testing experimental changes.
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -296,15 +303,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## Support
 
-<a href="https://www.buymeacoffee.com/novanglus" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 <p>Or</p> 
 
-<a href="https://www.patreon.com/novanglus">
-    <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+<a href="https://www.patreon.com/amitmerchant">
+	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
 
 <!-- CONTACT -->
@@ -350,7 +356,7 @@ Want to see your name here? Support us on [Patreon](https://www.patreon.com/nova
 [license-url]: https://github.com/Novanglus96/LenoreAD/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/johnmadamsjr
-[product-screenshot]: images/LenoreAD_Screenshot.png
+[product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

@@ -2,6 +2,7 @@ site_name: LenoreAD
 site_description: An advanced admin dashboard for AD
 site_author: John Adams
 site_url: https://novanglus96.github.io/LenoreAD/
+repo_url: https://github.com/Novanglus96/LenoreAD
 copyright: 2026 John Adams
 nav:
   - Home: index.md

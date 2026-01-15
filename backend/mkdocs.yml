@@ -49,5 +49,4 @@ extra:
   version:
     provider: mike
     default: latest
-extra_css:
-  - styles/version-banner.css
+    alias: true

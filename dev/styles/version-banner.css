@@ -1,0 +1,14 @@
+/* Hide banner on latest */
+[data-md-version="latest"] .dev-banner {
+    display: none;
+}
+
+/* Show banner on all non-latest versions */
+.dev-banner {
+    background: #ff9800;
+    color: #000;
+    font-weight: 600;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+}

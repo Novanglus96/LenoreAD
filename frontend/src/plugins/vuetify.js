@@ -9,9 +9,9 @@ import { VDateInput } from "vuetify/labs/VDateInput"; // Import the lab componen
 const myCustomLightTheme = {
   dark: false,
   colors: {
-    primary: "#ECFDF5",
-    secondary: "#06966A",
-    accent: "#FF5900",
+    primary: "#8c0c0c",
+    secondary: "#FBF4F4",
+    accent: "#671209",
     error: "#FF3407",
     warning: "#ffc107",
     info: "#795548",

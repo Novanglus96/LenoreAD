@@ -1,11 +1,8 @@
-{% extends "base.html" %}
-
-{% block announce %}
-  {% if config.extra.version and config.extra.version != "latest" %}
-    <div class="dev-banner">
-      🚧 You are viewing version <strong>{{ config.extra.version }}
-      <strong>{{ config.extra.version }}</strong>.
-      <a href="{{ base_url }}/latest/">Go to latest</a>
-    </div>
-  {% endif %}
-{% endblock %}
+{% extends "base.html" %} {% block announce %} {% if version and version !=
+"latest" %}
+<div class="dev-banner">
+  🚧 You are viewing documentation for version
+  <strong>{{ version }}</strong>.
+  <a href="{{ config.site_url }}latest/">Go to latest</a>
+</div>
+{% endif %} {% endblock %}
